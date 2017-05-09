@@ -11,8 +11,10 @@ public class Character extends Object{
 	}
 	
 	public void tick() {
-		x += velX;
 		y += velY;
+		if (y > 250){
+			velY = 0;
+		}
 		
 	}
 	public void render(Graphics g) {

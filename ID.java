@@ -1,4 +1,4 @@
 
 public enum ID {
-Player, Chaser, Obstacle
+Player, Chaser, Obstacle, Ground
 }

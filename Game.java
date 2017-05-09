@@ -13,12 +13,13 @@ public class Game extends Canvas implements Runnable{
 	
 	public Game(){
 		handler = new Handler();
-		new Window(WIDTH, HEIGHT, "Test", this);
-
 		this.addKeyListener(new KeyHandler(handler));
+		
+		new Window(WIDTH, HEIGHT, "Test", this);
 		
 		handler.addObject(new Character(120, 250, ID.Player));
 		handler.addObject(new Obstacle(700, 265, ID.Obstacle));
+		handler.addObject(new Ground(0, 290, ID.Ground));
 	}
 
 	public synchronized void start(){
