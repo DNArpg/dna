@@ -9,9 +9,15 @@ public class Game extends Canvas implements Runnable{
 	
 	private Thread thread;
 	private boolean running = false;
+	private Handler handler;
 	
 	public Game(){
 		new Window(WIDTH, HEIGHT, "Test", this);
+		handler = new Handler();
+		this.addKeyListener(new KeyHandler(handler));
+		
+		handler.addObject(new Character(120, 250, ID.Player));
+		handler.addObject(new Obstacle(700, 265, ID.Obstacle));
 	}
 
 	public synchronized void start(){
@@ -45,7 +51,7 @@ public class Game extends Canvas implements Runnable{
 				tick();
 				delta--;
 			}
-			if (running)
+			if (running)	
 				render();
 			frames++;
 
@@ -66,16 +72,16 @@ public class Game extends Canvas implements Runnable{
 		}
 		
 		Graphics g = bs.getDrawGraphics();
-		g.setColor(Color.GREEN);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		handler.render(g);
 		g.dispose();
 		bs.show();
 		
 	}
 
 	private void tick() {
-		// TODO Auto-generated method stub
-		
+		handler.tick();
 	}
 
 	public static void main(String args[]){

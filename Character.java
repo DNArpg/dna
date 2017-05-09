@@ -1,12 +1,26 @@
+import java.awt.Color;
+import java.awt.Graphics;
 
-public class Character {
+public class Character extends Object{
 	private String name;
 	private int money;
 	private int stamina;
 	
-	private Character(String name){
-		this.name = name;
+	public Character(int x, int y, ID id){
+		super(x, y, id);
 	}
+	
+	public void tick() {
+		x += velX;
+		y += velY;
+		
+	}
+	public void render(Graphics g) {
+		g.setColor(Color.WHITE);
+		g.fillRect(x, y, 40, 40);
+		
+	}
+	
 	public String getName(){
 		return name;
 	}
@@ -22,4 +36,6 @@ public class Character {
 	public int getStamina(){
 		return stamina;
 	}
+	
+
 }
