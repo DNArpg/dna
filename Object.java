@@ -5,7 +5,7 @@ public abstract class Object {
 	protected int y;
 	protected int velX;
 	protected int velY;
-	private ID id;
+	protected ID id;
 	
 	public Object(int x, int y, ID id){
 		this.x = x;
