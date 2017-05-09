@@ -12,7 +12,7 @@ public class Character extends Object{
 	
 	public void tick() {
 		y += velY;
-		if (y > 250){
+		if (y >= 250){
 			velY = 0;
 		}
 		
