@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable{
 		
 		new Window(WIDTH, HEIGHT, "Test", this);
 		
-		handler.addObject(new Character(120, 250, ID.Player));
+		handler.addObject(new Character(120, 200, ID.Player));
 		handler.addObject(new Obstacle(700, 265, ID.Obstacle));
 		handler.addObject(new Ground(0, 290, ID.Ground));
 	}
@@ -45,12 +45,14 @@ public class Game extends Canvas implements Runnable{
         double delta = 0;
 		long timer = System.currentTimeMillis();
 		int frames = 0;
+		int ticks = 0;
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 			while (delta >= 1) {
 				tick();
+				ticks++;
 				delta--;
 			}
 			if (running)	
@@ -59,8 +61,9 @@ public class Game extends Canvas implements Runnable{
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames);
+				System.out.println("FPS: " + frames + "  TICKS:" + ticks);
 				frames = 0;
+				ticks = 0;
 			}
 		}
 		stop();

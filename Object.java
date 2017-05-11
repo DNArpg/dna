@@ -6,11 +6,29 @@ public abstract class Object {
 	protected int velX;
 	protected int velY;
 	protected ID id;
+	protected boolean falling;
+	protected boolean jumping;
 	
 	public Object(int x, int y, ID id){
 		this.x = x;
 		this.y = y;
 		this.id = id;
+	}
+
+	public boolean isFalling() {
+		return falling;
+	}
+
+	public void setFalling(boolean falling) {
+		this.falling = falling;
+	}
+
+	public boolean isJumping() {
+		return jumping;
+	}
+
+	public void setJumping(boolean jumping) {
+		this.jumping = jumping;
 	}
 
 	public abstract void tick();

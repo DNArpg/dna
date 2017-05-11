@@ -6,14 +6,25 @@ public class Character extends Object{
 	private int money;
 	private int stamina;
 	
+	private float gravity = 0.025f;
+	
 	public Character(int x, int y, ID id){
 		super(x, y, id);
+		falling = true;
+		jumping = false;
 	}
 	
 	public void tick() {
 		y += velY;
+		
+		if(jumping || falling){
+			velY += gravity;
+		}
 		if (y >= 250){
-			velY = 0;
+			y = 250;
+		}
+		if (y <= 0){
+			y = 0;
 		}
 		
 	}
