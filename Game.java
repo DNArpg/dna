@@ -1,7 +1,11 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
+
+import javax.swing.Timer;
 
 public class Game extends Canvas implements Runnable{
 	
@@ -20,6 +24,26 @@ public class Game extends Canvas implements Runnable{
 		handler.addObject(new Character(120, 200, ID.Player));
 		handler.addObject(new Obstacle(700, 265, ID.Obstacle));
 		handler.addObject(new Ground(0, 290, ID.Ground));
+		
+		/*for(int i = 0; i < handler.objects.size(); i++){
+			Object temp = handler.objects.get(i);
+			
+			if(temp.getID() == ID.Player){
+				Timer peak = new Timer(0, new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						temp.setVelY(0);
+					}
+				});
+				if(temp.isJumping()){
+					peak.start();
+					
+					peak.setRepeats(false);
+					
+					temp.setVelY(3);
+				}
+				peak.restart();
+			}
+		}*/
 	}
 
 	public synchronized void start(){
@@ -61,7 +85,7 @@ public class Game extends Canvas implements Runnable{
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames + "  TICKS:" + ticks);
+				System.out.println("FPS: " + frames + "  TICKS: " + ticks);
 				frames = 0;
 				ticks = 0;
 			}

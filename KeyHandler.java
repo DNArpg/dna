@@ -22,12 +22,23 @@ public class KeyHandler extends KeyAdapter{
 		for (int i = 0; i < handler.objects.size(); i++) {
 			Object temp = handler.objects.get(i);
 			if (temp.getID() == ID.Player) {
+					if (key == KeyEvent.VK_W) {
+						/*Timer peak = new Timer(1, new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								temp.setVelY(0);
+							}
+						});
+*/						
+						if(temp.getLanded()){
+							temp.setVelY(-2);
+
+						}
+						//peak.start();
+						//temp.setVelY(3);
+					}
 				
-				if (key == KeyEvent.VK_W) {
-					temp.setVelY(-3);
-				}
 			}
-		
+
 		}
 
 	}

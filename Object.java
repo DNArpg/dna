@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.util.LinkedList;
 
 public abstract class Object {
 	protected int x;
@@ -6,8 +7,10 @@ public abstract class Object {
 	protected int velX;
 	protected int velY;
 	protected ID id;
-	protected boolean falling;
-	protected boolean jumping;
+//	protected boolean falling;
+//	protected boolean jumping;
+	protected boolean landed;
+
 	
 	public Object(int x, int y, ID id){
 		this.x = x;
@@ -15,7 +18,13 @@ public abstract class Object {
 		this.id = id;
 	}
 
-	public boolean isFalling() {
+/*	public boolean isFalling() {
+		if(velY > 0){
+			falling = true;
+		}
+		if(velY == 0){
+			falling = false;
+		}
 		return falling;
 	}
 
@@ -24,14 +33,29 @@ public abstract class Object {
 	}
 
 	public boolean isJumping() {
+		if(velY < 0){
+			jumping = true;
+		}
+		if(velY == 0){
+			jumping = false;
+		}
 		return jumping;
 	}
 
 	public void setJumping(boolean jumping) {
 		this.jumping = jumping;
 	}
+	*/
 
-	public abstract void tick();
+	public void setLanded(boolean value){
+		landed = value;
+	}
+	
+	public boolean getLanded(){
+		return landed;
+	}
+
+	public abstract void tick(LinkedList<Object> objects);
 	public abstract void render(Graphics g);
 
 	public void setX(int x){
